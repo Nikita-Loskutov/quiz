@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="mainblocksign">
+        <div class="lightsign"></div>
+        <div class="auth-container">
+            <div class="auth-form">
+                <h1>Регистрация</h1>
+                <form method="POST">
+                    <input type="text" name="password" placeholder="Никнейм" required>
+                    <input type="text" name="username" placeholder="Логин" required>
+                    <input type="password" name="password" placeholder="Пороль" required>
+                    <button type="submit">Зарегистрироваться</button>
+                </form>
+                <p>У вас уже есть аккаунт? <a href="{{ url_for('login') }}">Войти</a></p>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        <ul>
+                            {% for category, message in messages %}
+                                <li class="{{ category }}">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
