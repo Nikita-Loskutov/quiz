@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <div class="intoheader"></div>
+        <a class="Hquiz" href="/">Quizzes</a>
+        <div class="headerHref">
+            <a class="updates" href="stats">Статистика</a>
+            <a class="pricing" href="shop">Магазин</a>
+            {% if session['username'] %}
+                <div class="dropdown">
+                    <button class="dropbtn">{{ session['username'] }}↓</button>
+                    <div class="dropdown-content">
+                        <a href="{{ url_for('logout') }}">Выйти</a>
+                    </div>
+                </div>
+            {% else %}
+                <a class="signin" href="{{ url_for('login') }}">Вход</a>
+            {% endif %}
+        </div>
+        <div class="whitecutter"></div>
+    </div>
+
+    <div class="mainblock_shop">
+        <div class="avatar-block">
+            {% for avatar in avatars %}
+            <div class="avatar-item">
+                <img src="{{ url_for('static', filename=avatar['image']) }}" alt="{{ avatar['name'] }}">
+                {% if avatar.is_selected %}
+                    <p>Установлено</p>
+                {% elif avatar.is_owned %}
+                    <form class="avatar-set-form" method="post" action="{{ url_for('set_avatar') }}">
+                        <input type="hidden" name="avatar" value="{{ avatar['name'] }}">
+                        <button class='button-avatar' type="submit">Установить</button>
+                    </form>
+                {% else %}
+                    <form class="avatar-buy-form" method="post" action="{{ url_for('buy_avatar', avatar_name=avatar['name']) }}">
+                        <button class='button-avatar {% if user_coins >= avatar.price %}green-button{% else %}red-button{% endif %}' type="submit">
+                            Купить за {{ avatar['price'] }} монет
+                        </button>
+                    </form>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
