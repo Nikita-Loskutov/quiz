@@ -17,8 +17,16 @@
                 <div class="headerHref">
                     <a class="updates" href="stats">Статистика</a>
                     <a class = 'pricing' href="shop">Магазин</a>
-                    <a class = 'signin' href="login">Вход</a>
-                    <a class = 'signup' href="register">Регистрация</a>
+                    {% if session['username'] %}
+                        <div class="dropdown">
+                            <button class="dropbtn">{{ session['username'] }}↓</button>
+                            <div class="dropdown-content">
+                                <a href="{{ url_for('logout') }}">Выйти</a>
+                            </div>
+                        </div>
+                    {% else %}
+                        <a class="signin" href="{{ url_for('login') }}">Вход</a>
+                    {% endif %}
                 </div>
             <div class="whitecutter"></div>
         </div>
