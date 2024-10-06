@@ -1,5 +1,41 @@
 from random import randint
 import sqlite3
+from werkzeug.security import generate_password_hash, check_password_hash
+
+
+def create_user(username, password):
+    """Создание нового пользователя"""
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+
+    hashed_password = generate_password_hash(password)  # Хеширование пароля
+
+    try:
+        cursor.execute('''
+        INSERT INTO users (username, password) 
+        VALUES (?, ?)
+        ''', (username, hashed_password))
+        conn.commit()
+        return True
+    except sqlite3.IntegrityError:
+        return False  # Если имя пользователя уже существует
+    finally:
+        conn.close()
+
+
+def get_user_by_username(username):
+    """Получение пользователя по логину"""
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT * FROM users WHERE username = ?', (username,))
+    user = cursor.fetchone()
+    conn.close()
+    return user
+
+
+def verify_password(stored_password, provided_password):
+    """Проверка пароля"""
+    return check_password_hash(stored_password, provided_password)
 
 
 db_name = "quiz.db"
@@ -263,6 +299,7 @@ def get_next_question(question_id=0, quiz_id=1):
     close()
     return result
 
+
 def check_answer(question_id, answer):
     query = """
     SELECT question.answer
@@ -271,7 +308,7 @@ def check_answer(question_id, answer):
     AND quiz_content.question_id = question.id
     """
     open()
-    cursor.execute(query, [str(question_id),])
+    cursor.execute(query, [str(question_id), ])
     result = cursor.fetchone()
     close()
     if result is None:
