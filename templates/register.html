@@ -13,9 +13,8 @@
             <div class="auth-form">
                 <h1>Регистрация</h1>
                 <form method="POST">
-                    <input type="text" name="password" placeholder="Никнейм" required>
                     <input type="text" name="username" placeholder="Логин" required>
-                    <input type="password" name="password" placeholder="Пороль" required>
+                    <input type="password" name="password" placeholder="Пароль" required>
                     <button type="submit">Зарегистрироваться</button>
                 </form>
                 <p>У вас уже есть аккаунт? <a href="{{ url_for('login') }}">Войти</a></p>
