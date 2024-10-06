@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stats</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class = 'header'>
+        <div class="intoheader"></div>
+            <a class="Hquiz" href="/">Quizzes</a>
+            <div class="headerHref">
+                <a class="updates" href="stats">Статистика</a>
+                <a class = 'pricing' href="shop">Магазин</a>
+                {% if session['username'] %}
+                    <div class="dropdown">
+                        <button class="dropbtn">{{ session['username'] }}↓</button>
+                        <div class="dropdown-content">
+                            <a href="{{ url_for('logout') }}">Выйти</a>
+                        </div>
+                    </div>
+                {% else %}
+                    <a class="signin" href="{{ url_for('login') }}">Вход</a>
+                {% endif %}
+            </div>
+        <div class="whitecutter"></div>
+    </div>
+    <div class="mainblock_stats">
+        <div class="user-block">
+            <p> <img src="{{ url_for('static', filename=user[5]) }}" alt="Avatar" width="150"></p>
+            <p>Имя: {{ user[0] }}</p>
+            <p>Достижения:  {{ user[1] }}</p>
+            <p>Уровень:  {{ user[2] }}</p>
+            <p>Монеты:  {{ user[3] }}</p>
+            <p>Пройденных правильно викторин:  {{ user[4] }}</p>
+        </div>
+    </div>
+</body>
+</html>
