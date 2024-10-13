@@ -720,6 +720,45 @@ body {
 }
 /*index.html*/
 @media all and (max-width: 1440px){
+    .headerHref updates{
+        padding-left:100px
+
+    }
+    .dropbtn {
+        padding-left:50px;
+    }
+
+    .dropdown-content {
+        padding-left:40px;
+    }
+    .mainblock_shop{
+        width: 100vw;
+        height: 270vh;
+    }
+    .avatar-block{
+        padding-left:100px;
+        height:180vw;
+    }
+    .avatar-block img{
+        width:200px;
+        height:200px;
+        padding:50px 75px 10px 10px;
+    }
+
+    .avatar-item p{
+        margin-left:40px;
+    }
+
+    .avatar-buy-form{
+        padding-left:7px;
+    }
+    .avatar-set-form{
+        padding-left:45px;
+    }
+    .mainblock_stats {
+        height:50vw;
+        padding-top:100px;
+    }
     .mainblock_test {
         width: 100vw;
         height: 70vh;
@@ -786,6 +825,10 @@ body {
     }
 }
 @media all and (max-width: 1024px){
+    .mainblock_stats {
+        height:75vw;
+        padding-top:50px;
+    }
     .header {
         gap: 0px;
         padding-left: 20px;
@@ -846,6 +889,30 @@ body {
 }
 
 @media all and (max-width: 768px){
+    .mainblock_shop{
+        width: 100vw;
+        height: 135vh;
+    }
+    .avatar-block{
+        padding-left:130px;
+        height:100vw;
+    }
+    .avatar-block img{
+        width:200px;
+        height:200px;
+        padding:50px 75px 10px 10px;
+    }
+
+    .avatar-item p{
+        margin-left:40px;
+    }
+
+    .avatar-buy-form{
+        padding-left:7px;
+    }
+    .avatar-set-form{
+        padding-left:45px;
+    }
     .mainblock_result {
         width: 100vw;
         height: 87vh;
@@ -927,8 +994,47 @@ body {
         width: 250px;
         filter: blur(30px);
     }
+    .mainblock_stats {
+        padding-top: 100px;
+        height:93vw
+    }
 }
 @media all and (max-width: 425px){
+    .mainblock_stats {
+        padding-top: 100px;
+        height:168vw
+    }
+    .dropbtn {
+        padding-left:50px;
+    }
+
+    .dropdown-content {
+        padding-left:40px;
+    }
+    .mainblock_shop{
+        width: 100vw;
+        height: 270vh;
+    }
+    .avatar-block{
+        padding-left:100px;
+        height:180vw;
+    }
+    .avatar-block img{
+        width:200px;
+        height:200px;
+        padding:50px 75px 10px 10px;
+    }
+
+    .avatar-item p{
+        margin-left:40px;
+    }
+
+    .avatar-buy-form{
+        padding-left:7px;
+    }
+    .avatar-set-form{
+        padding-left:45px;
+    }
     .header {
         gap: 0px;
         padding-left: 20px;
